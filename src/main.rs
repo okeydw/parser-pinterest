@@ -405,7 +405,7 @@ async fn collect_relay(
             if batch_images.len() < batch_limit {
                 if batch_images.len() == prev_count {
                     stuck_count += 1;
-                    if stuck_count >= 3 { break; } // выходим — страница кончилась
+                    if stuck_count >= 3 { break; } 
                     tokio::time::sleep(Duration::from_millis(cooldown + 1500)).await;
                 } else {
                     stuck_count = 0;
@@ -417,7 +417,6 @@ async fn collect_relay(
 
         images.extend(batch_images);
 
-        // Берём 2-й пост как следующую страницу (если он есть)
         if images.len() < amount {
             if batch_posts.len() >= 2 {
                 current_url = batch_posts[1].clone();
